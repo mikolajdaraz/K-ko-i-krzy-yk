@@ -68,7 +68,23 @@ namespace Kółko_i_krzyżyk
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            var button = (Button)sender;
 
+            // Find the buttons position in the array
+            var column = Grid.GetColumn(button);
+            var row = Grid.GetRow(button);
+
+            var index = column + (row * 3);
+
+            // Don't do anything if the cell already has a value in it
+            if (mResults[index] != MarkType.Free)
+                return;
+
+            // Set the cell value based on which players turn it is
+            mResults[index] = mPlayer1Turn ? MarkType.Cross : MarkType.Nought;
+
+            // Set button text to the result
+            button.Content = mPlayer1Turn ? "X" : "O";
         }
     }
 }
