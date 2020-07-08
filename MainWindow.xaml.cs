@@ -76,15 +76,32 @@ namespace Kółko_i_krzyżyk
 
             var index = column + (row * 3);
 
-            // Don't do anything if the cell already has a value in it
+            
             if (mResults[index] != MarkType.Free)
                 return;
 
-            // Set the cell value based on which players turn it is
+            
             mResults[index] = mPlayer1Turn ? MarkType.Cross : MarkType.Nought;
 
-            // Set button text to the result
+            
             button.Content = mPlayer1Turn ? "X" : "O";
+
+            //zmienia kolor kółka na zielony
+            if (mPlayer1Turn)
+            {
+                button.Foreground = Brushes.Red;
+            }
+            
+            //przełącza kolej graczy 
+            mPlayer1Turn ^= true;
+            CheckForWinner();
+        
+        }
+        private void CheckForWinner()
+        {
+            var same = (mResults[0] & mResults[1] & mResults[2]) == mResults[0];
+
+            if (mResults[0] != MarkType.Free &&)
         }
     }
 }
