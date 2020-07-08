@@ -146,7 +146,7 @@ namespace Kółko_i_krzyżyk
                 //zanzacza wygrane komórki na zielono
                 Button0_0.Background = Button1_1.Background = Button2_2.Background = Brushes.Green;
             }
-            if (mResults[2] != MarkType.Free && (mResults[2] & mResults[4] & mResults[6]) == mResults[0])
+            if (mResults[2] != MarkType.Free && (mResults[2] & mResults[4] & mResults[6]) == mResults[2])
             {
                 mGameEndend = true;
                 //zanzacza wygrane komórki na zielono
