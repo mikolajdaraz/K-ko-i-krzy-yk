@@ -68,6 +68,11 @@ namespace Kółko_i_krzyżyk
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (mGameEndend)
+            {
+                NewGame();
+                return;
+            }
             var button = (Button)sender;
 
             // Find the buttons position in the array
@@ -99,9 +104,12 @@ namespace Kółko_i_krzyżyk
         }
         private void CheckForWinner()
         {
-            var same = (mResults[0] & mResults[1] & mResults[2]) == mResults[0];
-
-            if (mResults[0] != MarkType.Free &&)
+            if (mResults[0] != MarkType.Free && (mResults[0] & mResults[1] & mResults[2]) == mResults[0])
+            {
+                mGameEndend = true;
+                //zanzacza wygrane komórki na zielono
+                Button0_0.Background = Button1_0.Background = Button2_0.Background = Brushes.Green;
+            }
         }
     }
 }
